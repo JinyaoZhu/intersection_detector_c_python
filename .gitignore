@@ -1,0 +1,5 @@
+**.o
+**.out
+./test_cpp
+.vscode
+__pycache__
