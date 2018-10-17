@@ -24,7 +24,7 @@ IntersectionDetector::IntersectionDetector()
 }
 
 /**
- * test rays for intersection with an obstacle grid map and optionally 
+ * test rays for intersection with an obstacle grid map and 
  * return the distance from the start point to the first obstacle.
  * 
  * Inputs:
