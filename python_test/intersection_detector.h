@@ -6,7 +6,8 @@
 #include "stdio.h"
 #include "stdbool.h"
 
-#define FAST_SQRT
+// TODO: incorrect results while using inv_sqrt
+// #define FAST_SQRT
 
 #ifndef FAST_SQRT
 #include "math.h"
