@@ -20,12 +20,12 @@ map_img = map.reshape((height,height))
 plt.imshow(map_img)
 
 # setting rays
-N_rays = 5
-ray_start = np.array([1,1,1,1,5,
-                      1,1,1,5,8],dtype=np.float32)
+N_rays = 7
+ray_start = np.array([3,3,3,3,3,3,8,
+                      5,5,5,5,5,5,8],dtype=np.float32)
 
-ray_end   = np.array([1,9,1,8,1,
-                      9,9,5,5,1],dtype=np.float32)
+ray_end   = np.array([1,5,1,1,5,8,1,
+                      1,1,8,5,5,5,1],dtype=np.float32)
 
 # outputs
 isect = np.zeros(N_rays,dtype=np.uint8)

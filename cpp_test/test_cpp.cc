@@ -13,7 +13,7 @@ int main()
     int height = 10;
     int width = 10;
 
-    int N_ray = 5;
+    int N_ray = 7;
 
     // genrate a map
     for (int i = 0; i < height; i++)
@@ -45,10 +45,10 @@ int main()
     printf("\n");
 
     // give start and end points
-    float startPoint[N_ray * 2] = {1,1,1,1,5,
-                                   1,1,1,5,8};
-    float endPoint[N_ray * 2] = {1,9,1,8,1,
-                                 9,9,5,5,1};
+    float startPoint[N_ray * 2] = {3,3,3,3,3,3,8,
+                                   5,5,5,5,5,5,8};
+    float endPoint[N_ray * 2] = {1,5,1,1,5,8,1,
+                                 1,1,8,5,5,5,1};
 
     printf("Inputs:\n");
     for (int i = 0; i < N_ray; i++)
