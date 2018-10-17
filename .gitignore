@@ -1,5 +1,6 @@
-**.o
-**.out
-./test_cpp
+**/.o
+**/.out
+**/test_cpp
 .vscode
 __pycache__
+**/build

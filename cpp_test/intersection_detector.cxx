@@ -1,21 +1,9 @@
-// interdection_detector.cxx
+// intersection_detector.cxx
 
-/*******************************************************
- * test rays for intersection with an obstacle grid map and optionally 
- * return the distance from the start point to the first obstacle.
- * Outputs: 
- * - intersection = true for each ray that intersects an obstacle
- * - range = distance from start to first obstacle or (-1) when no intersection was found
- *Inputs:
- * - obstacles: matrix (uint8 or mxLogical), map of obstacles
- * - rayStart: Mx2 matrix of ray start coordinates (relative to map)
- * - rayEnd: Mx2 matrix of ray end coordinates (relative to map)
- */
-
-// #include "stdio.h"
+#include "stdio.h"
 #define FAST_SQRT
 
-#include "interdection_detector.h"
+#include "intersection_detector.h"
 
 #ifndef FAST_SQRT
 #include "math.h"
@@ -32,9 +20,32 @@ IntersectionDetector::IntersectionDetector(const bool *p_map, const int map_high
 
 IntersectionDetector::IntersectionDetector()
 {
-  // printf("Created an empty IntersectionDetector...\n");
+  printf("Created an empty IntersectionDetector...\n");
 }
 
+/**
+ * test rays for intersection with an obstacle grid map and optionally 
+ * return the distance from the start point to the first obstacle.
+ * 
+ * Inputs:
+ * - ray_start: start points of the rays, 1-D array(float32)
+ * - ray_end: end points of the rays, 1-D array(float32)
+ * - num_of_ray: number of rays
+ * 
+ * Outputs: 
+ * - p_isec: =1(true) if the ray intersects an obstacle else=0(false), 1-D array(bool)
+ * - p_range: distance from start to first obstacle or (-1) when no intersection was found
+ * 
+ * The map: 
+ * 1-D Array, start from upper left, end at lower right
+ * 
+ * (0,0) +-----------> X (width-1,0)
+ * (0,1) |  --------->   (width-1,1)
+ *       :  _________|
+ *       : |
+ *       | ---------->
+ *     Y v  
+*/
 void IntersectionDetector::detect(const float *ray_start, const float *ray_end, const int num_of_rays, bool *p_isec, float *p_range)
 {
   bool obstacleValue = false; //which value in the map should be treated as obstacle

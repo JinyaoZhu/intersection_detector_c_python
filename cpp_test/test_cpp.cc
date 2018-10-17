@@ -1,7 +1,7 @@
-// compile: g++ -o test_cpp interdection_detector.cxx test_cpp.cc 
-// run: ./tes_cpp
+// compile: g++ -o test_cpp intersection_detector.cxx test_cpp.cc 
+// run: ./test_cpp
 
-#include "interdection_detector.h"
+#include "intersection_detector.h"
 #include <iostream>
 #include <stdio.h>
 
