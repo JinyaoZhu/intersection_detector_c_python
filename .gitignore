@@ -2,5 +2,6 @@
 **/.out
 **/test_cpp
 .vscode
+**/.vscode
 __pycache__
 **/build
