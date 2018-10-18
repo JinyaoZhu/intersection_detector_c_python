@@ -6,8 +6,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #genrate a map
-height = 10
-width = 10
+height = 8
+width = 12
 map = np.zeros(height*width,dtype=np.uint8)
 for i in range(height):
     for j in range(width):
@@ -16,7 +16,7 @@ for i in range(height):
         else:
             map[i*width + j] = 0
 
-map_img = map.reshape((height,height))
+map_img = map.reshape((height,width))
 plt.imshow(map_img)
 
 # setting rays
