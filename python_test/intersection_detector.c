@@ -49,7 +49,7 @@ float inv_sqrt(float number)
  *       :  _________|
  *       : |
  *       | ---------->
- *     Y v  
+ *     Y v            (width-1,height-1)
 */
 void do_detect(const unsigned char *p_map, int size_of_map,
              const int map_height,  const int map_width,
@@ -62,7 +62,7 @@ void do_detect(const unsigned char *p_map, int size_of_map,
   const unsigned char* pMap = p_map;
   int height = map_height;
   int width = map_width;
-  int pitch = height;
+  int pitch = width;
   //=========================================================================================
   unsigned char obstacleValue = OBSTACLE_VALUE; //which value in the map should be treated as obstacle
 
@@ -81,7 +81,7 @@ void do_detect(const unsigned char *p_map, int size_of_map,
     int ys = (int)((*rayStart.pY++) + 0.5);
     if (xs >= 0 && ys >= 0 && xs < width && ys < height)
     {
-      if (pMap[xs * pitch + ys] != obstacleValue)
+      if (pMap[xs + ys*pitch] != obstacleValue)
       {
         int xe = (int)((*rayEnd.pX++) + 0.5);
         int ye = (int)((*rayEnd.pY++) + 0.5);
@@ -92,7 +92,7 @@ void do_detect(const unsigned char *p_map, int size_of_map,
         bool isect;
 
 #define CHECK_CELL                          \
-  if (pMap[x * pitch + y] != obstacleValue) \
+  if (pMap[x + y*pitch] != obstacleValue) \
   {                                         \
     prevX = x;                              \
     prevY = y;                              \

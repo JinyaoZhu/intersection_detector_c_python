@@ -1,7 +1,7 @@
 // intersection_detector.cxx
 
 #include "stdio.h"
-#define FAST_SQRT
+// #define FAST_SQRT
 
 #include "intersection_detector.h"
 
@@ -13,8 +13,8 @@ IntersectionDetector::IntersectionDetector(const bool *p_map, const int map_high
 {
   pMap = (bool *)p_map;
   width = map_width;
-  height = map_width;
-  pitch = height;
+  height = map_hight;
+  pitch = width;
   // printf("Created an IntersectionDetector...\n");
 }
 
@@ -44,7 +44,7 @@ IntersectionDetector::IntersectionDetector()
  *       :  _________|
  *       : |
  *       | ---------->
- *     Y v  
+ *     Y v            (width-1,height-1)
 */
 void IntersectionDetector::detect(const float *ray_start, const float *ray_end, const int num_of_rays, bool *p_isec, float *p_range)
 {
@@ -65,7 +65,7 @@ void IntersectionDetector::detect(const float *ray_start, const float *ray_end, 
     int ys = (int)((*rayStart.pY++) + 0.5);
     if (xs >= 0 && ys >= 0 && xs < width && ys < height)
     {
-      if (pMap[xs * pitch + ys] != obstacleValue)
+      if (pMap[xs + ys*pitch] != obstacleValue)
       {
         int xe = (int)((*rayEnd.pX++) + 0.5);
         int ye = (int)((*rayEnd.pY++) + 0.5);
@@ -76,7 +76,7 @@ void IntersectionDetector::detect(const float *ray_start, const float *ray_end, 
         bool isect;
 
 #define CHECK_CELL                          \
-  if (pMap[x * pitch + y] != obstacleValue) \
+  if (pMap[x + y*pitch] != obstacleValue) \
   {                                         \
     prevX = x;                              \
     prevY = y;                              \

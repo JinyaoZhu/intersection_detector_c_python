@@ -9,18 +9,19 @@ int main()
 {
     std::cout << "Test intersection_detector..." << std::endl;
 
-    bool map[100];
-    int height = 10;
-    int width = 10;
+    const int height = 7;
+    const int width = 9;
 
-    int N_ray = 7;
+    bool map[height*width];
+
+    int N_ray = 8;
 
     // genrate a map
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
-            if ((i == 0) || (i == height - 1) || (j == 0) || (j == width - 1) || ((i > 3)&&(j>3)&&(i<height-3)))
+            if ((i <= 1) || (i >= height - 2)||(j <= 1) || (j >= width - 2))
                 map[i*width + j] = false; // obstacle
             else
                 map[i*width + j] = true;  // free
@@ -45,10 +46,10 @@ int main()
     printf("\n");
 
     // give start and end points
-    float startPoint[N_ray * 2] = {3,3,3,3,3,3,8,
-                                   5,5,5,5,5,5,8};
-    float endPoint[N_ray * 2] = {1,5,1,1,5,8,1,
-                                 1,1,8,5,5,5,1};
+    float startPoint[N_ray * 2] = {4,4,4,4,4,4,4,4,
+                                   3,3,3,3,3,3,3,3};
+    float endPoint[N_ray * 2] = {7,7,4,1,1,1,4,7,
+                                 3,1,1,1,3,5,5,5};
 
     printf("Inputs:\n");
     for (int i = 0; i < N_ray; i++)
